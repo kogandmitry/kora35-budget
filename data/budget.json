@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "КОРА 35 — бюджет юбилейного проекта",
+    "asOf": "2026-08-12",
+    "ceiling": 1000000
+  },
+  "lines": [
+    {
+      "id": "animators",
+      "block": "Дети",
+      "type": "ядро"
+    },
+    {
+      "id": "kids_contest_prizes",
+      "block": "Дети",
+      "type": "ядро"
+    },
+    {
+      "id": "kids_gifts_other",
+      "block": "Дети",
+      "type": "ядро"
+    },
+    {
+      "id": "children-excursion-direct-actuals",
+      "block": "Предъюбилейные события",
+      "type": "ядро"
+    },
+    {
+      "id": "candidate_teen_volunteers",
+      "block": "Дополнительно (пересмотреть)",
+      "type": "опция"
+    },
+    {
+      "id": "sports",
+      "block": "Дополнительно (пересмотреть)",
+      "type": "ядро"
+    },
+    {
+      "id": "yoga_trainer",
+      "block": "Программа",
+      "type": "ядро"
+    },
+    {
+      "id": "workshops",
+      "block": "Дополнительно (пересмотреть)",
+      "type": "опция"
+    },
+    {
+      "id": "quiz_other",
+      "block": "Дополнительно (пересмотреть)",
+      "type": "опция"
+    },
+    {
+      "id": "venue",
+      "block": "Площадка и операционка",
+      "type": "ядро"
+    },
+    {
+      "id": "medic",
+      "block": "Площадка и операционка",
+      "type": "ядро"
+    },
+    {
+      "id": "buses",
+      "block": "Транспорт",
+      "type": "ядро"
+    },
+    {
+      "id": "welcome",
+      "block": "Питание",
+      "type": "ядро"
+    },
+    {
+      "id": "adult_lunch_supplier_1",
+      "block": "Питание",
+      "type": "ядро"
+    },
+    {
+      "id": "hosts",
+      "block": "Программа",
+      "type": "ядро"
+    },
+    {
+      "id": "ops",
+      "block": "Дополнительно (пересмотреть)",
+      "type": "ядро"
+    },
+    {
+      "id": "unestimated_3",
+      "block": "Транспорт",
+      "type": "ядро"
+    },
+    {
+      "id": "unestimated_5",
+      "block": "Площадка и операционка",
+      "type": "ядро"
+    },
+    {
+      "id": "korachki",
+      "block": "Подарки",
+      "type": "ядро"
+    },
+    {
+      "id": "sound",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
+    },
+    {
+      "id": "photozone_logistics",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
+    },
+    {
+      "id": "photozone_finishing_option",
+      "block": "Медиа и цифровой контур",
+      "type": "опция"
+    },
+    {
+      "id": "photo_video_event",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
+    },
+    {
+      "id": "interviews",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
+    },
+    {
+      "id": "website",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
+    },
+    {
+      "id": "pm",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    },
+    {
+      "id": "coordinators",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    },
+    {
+      "id": "kpi",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    },
+    {
+      "id": "post",
+      "block": "Управление, премии и инфраструктура",
+      "type": "опция"
+    },
+    {
+      "id": "management-ai-infrastructure",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    },
+    {
+      "id": "reserve",
+      "block": "Резерв",
+      "type": "резерв"
+    },
+    {
+      "id": "unestimated_8",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    },
+    {
+      "id": "unestimated_14",
+      "block": "Управление, премии и инфраструктура",
+      "type": "ядро"
+    }
+  ]
+}
