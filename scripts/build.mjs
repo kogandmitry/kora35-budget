@@ -16,11 +16,13 @@ const current = {
   sports: ["Спорт инвентарь наличка (йога коврики, мячи, ракетки, настолки)", "1", 12000],
   yoga_trainer: ["Йога-тренер: вознаграждение и трансфер", "1", 6200],
   workshops: ["Мастер-классы (растения, кулинария, ...)", "2", 15000],
+  cooking_masterclass_prep: ["Подготовка кулинарного мастер-класса — расходы продолжают поступать", "промежуточная сумма", 11920.53],
   quiz_other: ["Благотворительность с помощью Биткоринов", "1", 50000],
   hosts: ["Основной ведущий торжественной части", "1", 15000],
   ops: ["Оформление, фотографии, вывески и другое на самой базе", "1", 5000],
   venue: ["Аренда базы «Литейщик»", "1", 112000],
   medic: ["Медик, безопасность и санитария", "1", 15000],
+  raincoats: ["Дождевики на случай осадков", "100 шт.", 11700],
   buses: ["Три автобуса по 20 мест, туда и обратно", "3 автобуса", 10000],
   welcome: ["Банан и коржик утром на 120 человек, вода, помпы, чай", "120 человек", 15000],
   adult_lunch_supplier_1: ["Поставщик питания 1 — обед", "1", 123750],
@@ -72,8 +74,14 @@ const lines = budget.lines
     };
   });
 
-const main = 955900.59;
-const additional = 75000;
+// Итоги считаются из строк и сверяются с ожидаемыми значениями,
+// чтобы сводка не разошлась с таблицей после правок.
+const expected = { main: 979521.12, additional: 75000 };
+const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
+const main = sumOf((id) => !additionalIds.includes(id));
+const additional = sumOf((id) => additionalIds.includes(id));
+if (main !== expected.main) throw new Error(`Основной бюджет: посчитано ${main}, ожидалось ${expected.main}`);
+if (additional !== expected.additional) throw new Error(`Дополнительно: посчитано ${additional}, ожидалось ${expected.additional}`);
 const maximum = main + additional;
 const blockNames = {
   "Дети": "Детский и семейный трек",
