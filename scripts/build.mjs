@@ -73,6 +73,7 @@ const lines = budget.lines
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
 const expected = { main: 943900.59, additional: 48700 };
+const participants = 160;
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
 const additional = sumOf((id) => additionalIds.includes(id));
@@ -135,7 +136,7 @@ const html = `<!doctype html>
 <article><span>Основной бюджет</span><strong>${money(main)}</strong><small>${money(budget.meta.ceiling - main)} до лимита</small></article>
 <article><span>Дополнительно</span><strong>${money(additional)}</strong><small>требует отдельного решения</small></article>
 <article${overLimit > 0 ? ' class="over"' : ""}><span>Максимум</span><strong>${money(maximum)}</strong><small>${overLimit > 0 ? `${money(overLimit)} сверх лимита` : `${money(-overLimit)} запас до лимита`}</small></article>
-<article><span>Лимит</span><strong>${money(budget.meta.ceiling)}</strong><small>300 участников · до ${money(maximum / 300)} на человека</small></article>
+<article><span>Лимит</span><strong>${money(budget.meta.ceiling)}</strong><small>${participants} участников · до ${money(maximum / participants)} на человека</small></article>
 </section>
 <nav><span>Основной</span><span>Дополнительно</span><span>Не оценено</span><span>Неактивно</span></nav>
 <section class="budget">${groups
