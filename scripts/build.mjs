@@ -40,7 +40,6 @@ const current = {
   "management-ai-infrastructure": ["Инфраструктура управления: Claude и ChatGPT", "1", 15000],
   reserve: ["Защищённый резерв", "1", 30000],
   unestimated_8: ["Сверхурочная работа команды и питание персонала", "1", 2000],
-  unestimated_14: ["Хранение, курьер и потеряшки после события", "", 0],
 };
 
 const money = (value) => value.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₽";
@@ -55,7 +54,7 @@ const statusOf = (line) =>
         : "Основной";
 const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const additionalIds = ["post"];
+const additionalIds = ["raincoats", "unestimated_3", "photozone_finishing_option", "post", "reserve", "unestimated_8"];
 const lines = budget.lines
   .filter((line) => line.id in current)
   .map((line) => {
@@ -74,7 +73,7 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 982600.59, additional: 10000 };
+const expected = { main: 933900.59, additional: 58700 };
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
 const additional = sumOf((id) => additionalIds.includes(id));
