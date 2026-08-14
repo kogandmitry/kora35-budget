@@ -25,7 +25,6 @@ const current = {
   welcome: ["Банан и коржик утром на 120 человек, вода, помпы, чай", "120 человек", 15000],
   adult_lunch_supplier_1: ["Поставщик питания 1 — обед", "1", 123750],
   unestimated_3: ["Дополнительный трансфер: такси и бензин личного транспорта", "1", 5000],
-  unestimated_5: ["Страхование мероприятия / ответственности", "", 0],
   korachki: ["КОРАчки для действующих и бывших сотрудников", "230 шт. × 412 ₽", 103000],
   sound: ["LED-экран и музыкальное оборудование", "1", 105000],
   photozone_logistics: ["Логистика фотозоны газелью", "4 000 ₽ туда + 4 000 ₽ обратно", 8000],
@@ -54,7 +53,7 @@ const statusOf = (line) =>
         : "Основной";
 const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const additionalIds = ["raincoats", "unestimated_3", "photozone_finishing_option", "post", "reserve", "unestimated_8"];
+const additionalIds = ["raincoats", "unestimated_3", "photozone_finishing_option", "reserve", "unestimated_8"];
 const lines = budget.lines
   .filter((line) => line.id in current)
   .map((line) => {
@@ -73,7 +72,7 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 933900.59, additional: 58700 };
+const expected = { main: 943900.59, additional: 48700 };
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
 const additional = sumOf((id) => additionalIds.includes(id));
