@@ -16,8 +16,6 @@ const current = {
   sports: ["Спорт инвентарь наличка (йога коврики, мячи, ракетки, настолки)", "1", 12000],
   yoga_trainer: ["Йога-тренер: вознаграждение и трансфер", "1", 6200],
   workshops: ["Мастер-классы (растения, кулинария, ...)", "2", 15000],
-  cooking_masterclass_prep: ["Подготовка кулинарного мастер-класса — расходы продолжают поступать", "промежуточная сумма", 11920.53],
-  quiz_other: ["Благотворительность с помощью Биткоринов", "1", 50000],
   hosts: ["Основной ведущий торжественной части", "1", 15000],
   ops: ["Оформление, фотографии, вывески и другое на самой базе", "1", 5000],
   venue: ["Аренда базы «Литейщик»", "1", 112000],
@@ -57,7 +55,7 @@ const statusOf = (line) =>
         : "Основной";
 const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const additionalIds = ["workshops", "quiz_other", "post"];
+const additionalIds = ["post"];
 const lines = budget.lines
   .filter((line) => line.id in current)
   .map((line) => {
@@ -76,13 +74,14 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 979521.12, additional: 75000 };
+const expected = { main: 982600.59, additional: 10000 };
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
 const additional = sumOf((id) => additionalIds.includes(id));
 if (main !== expected.main) throw new Error(`Основной бюджет: посчитано ${main}, ожидалось ${expected.main}`);
 if (additional !== expected.additional) throw new Error(`Дополнительно: посчитано ${additional}, ожидалось ${expected.additional}`);
 const maximum = main + additional;
+const overLimit = Math.round((maximum - budget.meta.ceiling) * 100) / 100;
 const blockNames = {
   "Дети": "Детский и семейный трек",
   "Предъюбилейные события": "Детский и семейный трек",
@@ -137,7 +136,7 @@ const html = `<!doctype html>
 <section class="summary" aria-label="Итоги бюджета">
 <article><span>Основной бюджет</span><strong>${money(main)}</strong><small>${money(budget.meta.ceiling - main)} до лимита</small></article>
 <article><span>Дополнительно</span><strong>${money(additional)}</strong><small>требует отдельного решения</small></article>
-<article class="over"><span>Максимум</span><strong>${money(maximum)}</strong><small>${money(maximum - budget.meta.ceiling)} сверх лимита</small></article>
+<article${overLimit > 0 ? ' class="over"' : ""}><span>Максимум</span><strong>${money(maximum)}</strong><small>${overLimit > 0 ? `${money(overLimit)} сверх лимита` : `${money(-overLimit)} запас до лимита`}</small></article>
 <article><span>Лимит</span><strong>${money(budget.meta.ceiling)}</strong><small>300 участников · до ${money(maximum / 300)} на человека</small></article>
 </section>
 <nav><span>Основной</span><span>Дополнительно</span><span>Не оценено</span><span>Неактивно</span></nav>

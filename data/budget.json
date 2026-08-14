@@ -46,16 +46,6 @@
       "type": "опция"
     },
     {
-      "id": "cooking_masterclass_prep",
-      "block": "Программа",
-      "type": "ядро"
-    },
-    {
-      "id": "quiz_other",
-      "block": "Дополнительно (пересмотреть)",
-      "type": "опция"
-    },
-    {
       "id": "venue",
       "block": "Площадка и операционка",
       "type": "ядро"
