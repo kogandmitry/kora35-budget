@@ -21,6 +21,7 @@ const current = {
   venue: ["Аренда базы «Литейщик»", "1", 112000],
   medic: ["Медик, безопасность и санитария", "1", 15000],
   raincoats: ["Дождевики на случай осадков", "100 шт.", 11700],
+  parking: ["Стоянка", "1", 3100],
   buses: ["Три автобуса по 20 мест, туда и обратно", "3 автобуса", 10000],
   welcome: ["Банан и коржик утром на 120 человек, вода, помпы, чай", "120 человек", 15000],
   adult_lunch_supplier_1: ["Поставщик питания 1 — обед", "1", 123750],
@@ -72,7 +73,7 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 943900.59, additional: 48700 };
+const expected = { main: 947000.59, additional: 48700 };
 const participants = 160;
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
