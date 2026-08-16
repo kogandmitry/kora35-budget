@@ -22,6 +22,7 @@ const current = {
   venue: ["Аренда базы «Литейщик»", "1", 112000],
   medic: ["Медик, безопасность и санитария", "1", 15000],
   raincoats: ["Дождевики на случай осадков", "100 шт.", 11700],
+  rain_canopy: ["Навес от дождя", "предварительная оценка", 113000],
   parking: ["Стоянка", "1", 3100],
   adhesive_tape: ["Лента клейкая", "1", 79.99],
   stationery: ["Канцелярские товары", "1", 474.92],
@@ -32,7 +33,7 @@ const current = {
   korachki: ["КОРАчки для действующих и бывших сотрудников", "230 шт. × 412 ₽", 103000],
   sound: ["LED-экран и музыкальное оборудование", "1", 105000],
   photozone_logistics: ["Логистика фотозоны газелью", "4 000 ₽ туда + 4 000 ₽ обратно", 8000],
-  photozone_finishing_option: ["Дооформление фотозоны — по отдельному решению", "решение отдельно", 0],
+  photozone_finishing_option: ["Оформление фотозоны", "предварительная оценка", 30000],
   printing_service: ["Услуга полиграфии", "1", 3546],
   photo_video_event: ["Фото- и видеофиксация на выезде: 2 фотографа-видеографа", "2 человека", 20000],
   interviews: ["Видеонарезки и интервью, около 5 выпусков", "около 5 выпусков", 150000],
@@ -58,7 +59,7 @@ const statusOf = (line) =>
         : "Основной";
 const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const additionalIds = ["raincoats", "unestimated_3", "photozone_finishing_option", "reserve", "unestimated_8"];
+const additionalIds = ["raincoats", "rain_canopy", "unestimated_3", "photozone_finishing_option", "reserve", "unestimated_8"];
 const lines = budget.lines
   .filter((line) => line.id in current)
   .map((line) => {
@@ -77,7 +78,7 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 954184.5, additional: 48700 };
+const expected = { main: 954184.5, additional: 191700 };
 const participants = 160;
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
