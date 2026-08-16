@@ -41,6 +41,11 @@
       "type": "ядро"
     },
     {
+      "id": "yoga_mats",
+      "block": "Программа",
+      "type": "ядро"
+    },
+    {
       "id": "workshops",
       "block": "Дополнительно (пересмотреть)",
       "type": "опция"
@@ -62,6 +67,16 @@
     },
     {
       "id": "parking",
+      "block": "Площадка и операционка",
+      "type": "ядро"
+    },
+    {
+      "id": "adhesive_tape",
+      "block": "Площадка и операционка",
+      "type": "ядро"
+    },
+    {
+      "id": "stationery",
       "block": "Площадка и операционка",
       "type": "ядро"
     },
@@ -114,6 +129,11 @@
       "id": "photozone_finishing_option",
       "block": "Медиа и цифровой контур",
       "type": "опция"
+    },
+    {
+      "id": "printing_service",
+      "block": "Медиа и цифровой контур",
+      "type": "ядро"
     },
     {
       "id": "photo_video_event",
