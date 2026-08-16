@@ -14,7 +14,7 @@ const current = {
   "children-excursion-direct-actuals": ["Детская экскурсия 24 июня — прямые расходы", "1", 26950.59],
   candidate_teen_volunteers: ["Волонтёрство старших детей на мероприятии", "", 0],
   sports: ["Спорт инвентарь наличка (йога коврики, мячи, ракетки, настолки)", "1", 12000],
-  yoga_trainer: ["Йога-тренер: вознаграждение и трансфер", "1", 6200],
+  yoga_trainer: ["Йога-тренер: вознаграждение и трансфер", "трансфер по факту", 5380],
   yoga_mats: ["Коврики для йоги", "5 шт.", 3083],
   workshops: ["Мастер-классы (растения, кулинария, ...)", "2", 15000],
   hosts: ["Основной ведущий торжественной части", "1", 15000],
@@ -78,7 +78,7 @@ const lines = budget.lines
 
 // Итоги считаются из строк и сверяются с ожидаемыми значениями,
 // чтобы сводка не разошлась с таблицей после правок.
-const expected = { main: 954184.5, additional: 191700 };
+const expected = { main: 953364.5, additional: 191700 };
 const participants = 160;
 const sumOf = (ids) => Math.round(lines.filter((line) => ids(line.id)).reduce((sum, line) => sum + amountOf(line), 0) * 100) / 100;
 const main = sumOf((id) => !additionalIds.includes(id));
